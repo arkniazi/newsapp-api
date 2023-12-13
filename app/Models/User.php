@@ -45,6 +45,6 @@ class User extends Authenticatable
 
     public function user_preferences(): HasMany
     {
-        return $this->hasMany(UserPreferences::class);
+        return $this->hasMany(UserPreference::class);
     }
 }
