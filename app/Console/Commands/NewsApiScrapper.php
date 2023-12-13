@@ -11,7 +11,7 @@ class NewsApiScrapper extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'app:news-api-scraper';
 
     /**
      * The console command description.
@@ -19,6 +19,12 @@ class NewsApiScrapper extends Command
      * @var string
      */
     protected $description = 'Command description';
+
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Execute the console command.
