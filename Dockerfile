@@ -1,4 +1,4 @@
-FROM php:8.2
+FROM php:8.0.2
 
 WORKDIR /var/www
 
@@ -22,7 +22,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN composer install
 
-# CMD php artisan serve --host=0.0.0.0 --port=8181
+CMD php artisan serve --host=0.0.0.0 --port=8181
 
 EXPOSE 8181
 

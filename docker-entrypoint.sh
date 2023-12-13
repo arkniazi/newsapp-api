@@ -3,7 +3,7 @@
 sleep 5
 
 # Run Laravel migrations
-php artisan migrate --force &
+php artisan migrate --force 
 
 # Run Laravel seeders
 # php artisan db:seed --force &
