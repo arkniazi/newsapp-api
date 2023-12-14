@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\UserPreferenceScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,6 +23,12 @@ class Article extends Model
         'published_at',
         'author',
     ];
+
+
+    protected static function booted()
+    {
+        static::addGlobalScope(new UserPreferenceScope);
+    }
 
     public function category(): BelongsTo
     {
