@@ -16,7 +16,7 @@ class NewsApiCrawler extends Command
      *
      * @var string
      */
-    protected $signature = 'app:news-api-scraper';
+    protected $signature = 'app:news-api-crawler';
 
     /**
      * The console command description.

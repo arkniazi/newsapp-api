@@ -15,7 +15,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('app:gaurdian-crawler');
+        $schedule->command('app:news-api-crawler');
+        $schedule->command('app:nyt-crawler');
     }
 
     /**
