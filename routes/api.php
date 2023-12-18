@@ -31,7 +31,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/profile', [UsersController::class, 'update']);
     Route::get('/articles', [ArticlesController::class, 'index']);
     Route::get('/articles/{id}', [ArticlesController::class, 'show']);
-    Route::get('/articles-meta', [ArticlesController::class, 'getNewsMeta']);
+    Route::get('/articles-meta', [ArticlesController::class, 'getArticlesMeta']);
     Route::get('/user-preferences', [UserPreferencesController::class,'fetch']);
     Route::put('/user-preferences',[UserPreferencesController::class, 'update']);
 
@@ -40,4 +40,4 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::get('/articles', [ArticlesController::class, 'index']);
 Route::get('/articles/{id}', [ArticlesController::class, 'show']);
-Route::get('/articles-meta', [ArticlesController::class, 'getNewsMeta']);
+Route::get('/articles-meta', [ArticlesController::class, 'getArticlesMeta']);

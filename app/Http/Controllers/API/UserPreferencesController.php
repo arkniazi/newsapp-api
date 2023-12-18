@@ -25,7 +25,7 @@ class UserPreferencesController extends Controller
             return response()->json(['message' => 'Preferences not found'], 404);
         }
 
-        return new UserPreferenceResource($preferences);
+        return new UserPreferenceResource(json_decode($preferences->preferences));
     }
     /**
      * Update the specified resource in storage.
@@ -36,11 +36,17 @@ class UserPreferencesController extends Controller
     public function update(UpdateUserPreferenceRequest $request)
     {
         $user = Auth::user();
-        $preferences = UserPreference::firstOrCreate(['user_id' => $user->id], $request->validated());
-
+        $preferences = UserPreference::where('user_id', $user->id)->first();
+        if(!$preferences){
+            $preferences = UserPreference::make();
+        }
+        $preferences->user_id = $user->id;
+        $preferences->preferences = json_encode($request->validated());
+        $preferences->save();
+        
         return response()->json([
             'message' => 'Preferences updated successfully',
-            'preferences' => new UserPreferenceResource($preferences),
+            'preferences' => new UserPreferenceResource(json_decode($preferences->preferences)),
         ]);
     }
 }

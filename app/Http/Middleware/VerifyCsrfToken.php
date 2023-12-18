@@ -13,4 +13,10 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
     ];
+
+    protected function tokensMatch($request)
+    {
+        // Disable CSRF check
+        return true;
+    }
 }
