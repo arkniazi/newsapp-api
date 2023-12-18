@@ -7,6 +7,7 @@ use App\Http\Requests\UpdatePasswordRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
@@ -18,8 +19,10 @@ class UsersController extends Controller
      * @param  int  $id
      * @return UserResource
      */
-    public function update(UpdatePasswordRequest $request, User $user)
+    public function update(UpdatePasswordRequest $request)
     {
+        $user = Auth::user();
+
         $this->authorize('update', $user);
 
         $user->password = Hash::make($request->new_password);
