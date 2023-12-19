@@ -41,8 +41,6 @@ class GaurdianCrawler extends Command
     {
         $this->info('Scraping from the News API...');
 
-        // Make an API request to retrieve news data
-
         $url = env('GUARDIAN_API_URL');
         $params = [
             'page-size' => 100,

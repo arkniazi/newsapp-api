@@ -12,7 +12,6 @@ class ArticleRepository
     {
         $query = Article::query();
 
-        // Apply filters using the `when()` method
         $query->when($request->filled('category_id'), function ($query) use ($request) {
             $query->where('category_id', $request->category_id);
         });

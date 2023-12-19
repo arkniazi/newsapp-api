@@ -45,8 +45,6 @@ class NewsApiCrawler extends Command
 
         $url = env('NEWS_API_URL');
         
-
-        // Make an API request to retrieve news data
         $categories = Category::all();
 
         $scrapedData = [];

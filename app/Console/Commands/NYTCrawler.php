@@ -42,8 +42,6 @@ class NYTCrawler extends Command
     {
         $this->info('Scraping from the News API...');
 
-        // Make an API request to retrieve news data
-
         $url = env('NEWYORK_TIMES_API_URL');
         $params =  [
             'limit' => 50,
