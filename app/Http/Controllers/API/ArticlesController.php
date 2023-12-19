@@ -27,7 +27,7 @@ class ArticlesController extends Controller
     public function index(Request $request)
     {
         $query = $this->articleRepository->getFilteredArticles($request);
-        $articles = $query->paginate(10);
+        $articles = $query->paginate(12);
         return ArticleResource::collection($articles);
     }
 
@@ -37,8 +37,9 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return ArticleResource
      */
-    public function show(Article $article)
+    public function show($id)
     {
+        $article = Article::find($id);
         return new ArticleResource($article);
     }
 

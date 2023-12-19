@@ -23,8 +23,8 @@ class ArticleResource extends JsonResource
             'source_url' => $this->source_url,
             'thumbnail_url' => $this->thumbnail_url,
             'published_at' => date('D M j, Y', strtotime($this->published_at)),
-            'category' => $this->category->name,
-            'source' => $this->news_source->name,
+            'category' => $this->category ? $this->category->name : '',
+            'source' => $this->news_source ? $this->news_source->name : '',
         ];
     }
 }
