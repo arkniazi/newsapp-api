@@ -17,14 +17,12 @@ class ArticleRepository
             $query->where('category_id', $request->category_id);
         });
 
-        $query->when($request->filled('news_source_id'), function ($query) use ($request) {
-            $query->where('news_source_id', $request->news_source_id);
+        $query->when($request->filled('source_id'), function ($query) use ($request) {
+            $query->where('news_source_id', $request->source_id);
         });
 
         $query->when($request->filled('author_name'), function ($query) use ($request) {
-            $query->whereHas('author', function ($query) use ($request) {
-                $query->where('name', 'like', '%' . $request->author_name . '%');
-            });
+            $query->where('author', 'like', '%' . $request->author_name . '%');
         });
 
         $query->when($request->filled('date'), function ($query) use ($request) {
@@ -33,9 +31,7 @@ class ArticleRepository
 
         $query->when($request->filled('keyword'), function ($query) use ($request) {
             $query->where(function ($query) use ($request) {
-                $query->where('title', 'like', '%' . $request->keyword . '%')
-                    ->orWhere('description', 'like', '%' . $request->keyword . '%')
-                    ->orWhere('content', 'like', '%' . $request->keyword . '%');
+                $query->where('title', 'like', '%' . $request->keyword . '%');
             });
         });
 
